@@ -150,12 +150,12 @@ function checkWin(intento, content, pelicula) {
 
         window.addEventListener("click", function () {
 
-            window.location.replace("ahorcado.html");
+            window.location.replace("index.html");
 
         });
         nombrePeli.addEventListener("keydown", function () {
 
-            window.location.replace("ahorcado.html");
+            window.location.replace("index.html");
 
         });
 
