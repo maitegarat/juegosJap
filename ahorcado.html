@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El ahorcado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <br><br><br><hr>
+            <h1 class="text-center">El Ahorcado</h1>
+            <div class="row">
+                <div class="col col-md-6 col-12">
+                    <br><br><br>
+                    <h3>Ingresa una letra</h3>
+                    <input type="text" id="letra" maxlength="1" autofocus>
+                    <button class="btn btn-primary" id="enviar">Probar letra</button>
+                    <br><br><br>
+                    <h6>Intentos restantes:</h6>
+                    <h6 id="intentos"></h6>
+                </div>
+                <div class="col col-md-6">
+                    <br><br><br>
+                    <hr>
+                    <h4 id="content">
+                    </h4>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-primary d-none" id="toggleBtn" data-toggle="modal"
+        data-target="#myModal"></button>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Ingresa el nombre de la película</h5>
+                    <button type="button" class="close d-none" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="nombrePeli" autofocus>
+                </div>
+                <div class="alert alert-success d-none" id="success" role="alert">
+                    Acertaste!
+                </div>
+                <div class="alert alert-danger d-none" id="fail" role="alert">
+                    Esa no era :( La película era: <span class="fw-bold" id="peliReal"></span>
+                </div>
+                <div class="alert alert-primary d-none" id="playAgain" role="alert">
+                    Para jugar de nuevo presiona cualquier tecla
+                </div>
+                <div class="modal-footer">
+                  
+                    <button type="button" class="btn btn-secondary d-none" data-dismiss="modal"
+                        id="close">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="verify">Verificar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
