@@ -1,4 +1,5 @@
-var datosUser = JSON.parse(localStorage.getItem('Datos-User'));
+var userName = JSON.parse(localStorage.getItem('usuarioActual'));
+var datosUser = JSON.parse(localStorage.getItem(`Datos-${userName}`));
 
 
 var
@@ -145,11 +146,11 @@ function checkWin(intento, content, pelicula) {
 
             
             if (datosUser) {
-                let prueba = datosUser.puntos
+                let puntajes = datosUser.puntos
                 console.log(localStorage.getItem('Datos-User'))
-                prueba += 1;
+                puntajes += 1;
     
-                localStorage.setItem('Datos-User', JSON.stringify({ usuario: datosUser.usuario, puntos: prueba }))   
+                localStorage.setItem('Datos-User', JSON.stringify({ usuario: datosUser.usuario, puntos: puntajes }))   
             }
             
 

@@ -34,9 +34,9 @@ function comparacion(array) {
 
         if (user == array[i].user && password == array[i].password) {
             window.location.replace('inicio.html')
-            localStorage.setItem(`Datos-User${i}`, JSON.stringify({ usuario: user, puntos: 0 }))
+            localStorage.setItem(`Datos-${user}`, JSON.stringify({ usuario: user, puntos: 0 }))
+            localStorage.setItem(`usuarioActual`, user )
             flag = true;
-            localStorage.setItem('usuarioActual', i)
         };
     }
 
