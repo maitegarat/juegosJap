@@ -1,3 +1,6 @@
+var datosUser = JSON.parse(localStorage.getItem('Datos-User'));
+
+
 var
 
     pelis = [
@@ -40,6 +43,9 @@ document.addEventListener("DOMContentLoaded", function () {
     mostrarAsteriscos(palabrasPeli, "%"); //Mostrar asteriscos recibe por parámetros un array que contiene las palabras del nombre 
     //de la película y la letra a la que hay que comparar, al cargar por primera vez como no deseamos que compare a ninguna letra
     //pasamos por parámetro el símbolo "%"
+    console.log(peliActual)
+    document.getElementById("nombre").innerHTML = `${datosUser.usuario}`
+    document.getElementById("puntaje").innerHTML = `${datosUser.puntos}`
 
     document.getElementById("enviar").addEventListener("click", function () {
         validarLetra();
@@ -49,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
             validarLetra();
         }
     }) //Se ejecuta la función validarLetra cuando el usuario hace click en Probar Letra o da enter
+
 });
 
 function validarLetra() {
@@ -120,7 +127,7 @@ function checkWin(intento, content, pelicula) {
 
         nombrePeli.addEventListener("keydown", function (e) {
 
-            if (e.key === "Enter") {    
+            if (e.key === "Enter") {
                 validarPelicula();
                 reloadPage();
             }
@@ -134,30 +141,41 @@ function checkWin(intento, content, pelicula) {
         if (nombrePeli.value.toLowerCase() == pelicula.toLowerCase()) {
 
             document.getElementById("success").classList.remove("d-none");  //Si el usuario acierta se muestra el diálogo "Acertaste"
+            localStorage.getItem('Datos-User')
 
-        } else {
+            
+            if (datosUser) {
+                let prueba = datosUser.puntos
+                console.log(localStorage.getItem('Datos-User'))
+                prueba += 1;
+    
+                localStorage.setItem('Datos-User', JSON.stringify({ usuario: datosUser.usuario, puntos: prueba }))   
+            }
+            
 
-            document.getElementById("fail").classList.remove("d-none");// Si no acierta se muestra el diálogo "No acertaste" y el nombre correcto
-            document.getElementById("peliReal").innerHTML = `${peliActual}`;
+            } else {
 
+                document.getElementById("fail").classList.remove("d-none");// Si no acierta se muestra el diálogo "No acertaste" y el nombre correcto
+                document.getElementById("peliReal").innerHTML = `${peliActual}`;
+
+            }
+
+            document.getElementById("verify").classList.add("d-none");//se oculta el botón de verificar
+            document.getElementById("playAgain").classList.remove("d-none");//se muestra el cartel de volver a jugar
         }
 
-        document.getElementById("verify").classList.add("d-none");//se oculta el botón de verificar
-        document.getElementById("playAgain").classList.remove("d-none");//se muestra el cartel de volver a jugar
-    }
+        function reloadPage() {//Recarga la página si el usuario hace otro click o presiona una tecla
 
-    function reloadPage() {//Recarga la página si el usuario hace otro click o presiona una tecla
+            window.addEventListener("click", function () {
 
-        window.addEventListener("click", function () {
+                window.location.replace("inicio.html");
 
-            window.location.replace("index.html");
+            });
+            nombrePeli.addEventListener("keydown", function () {
 
-        });
-        nombrePeli.addEventListener("keydown", function () {
+                window.location.replace("inicio.html");
 
-            window.location.replace("index.html");
+            });
 
-        });
-
-    }
-};
+        }
+    };
